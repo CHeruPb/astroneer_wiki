@@ -79,6 +79,8 @@ class Planet {
   final String secondaryResourse;
   final List<String> gases;
   final String difficulty;
+  final String scale;
+  final String dayLength;
   final String sun;
   final String wind;
   final String powerRequired;
@@ -94,6 +96,8 @@ class Planet {
     required this.secondaryResourse,
     required this.gases,
     required this.difficulty,
+    required this.scale,
+    required this.dayLength,
     required this.sun,
     required this.wind,
     required this.powerRequired,
@@ -112,6 +116,8 @@ List<Planet> planets = [
       secondaryResourse: 'Resin',
       gases: ['Oxygen'],
       difficulty: 'Легкая',
+      scale: 'Большой',
+      dayLength: '12 мин',
       sun: 'Хорошее',
       wind: 'Среднее',
       powerRequired: '5U/s',
@@ -127,6 +133,8 @@ List<Planet> planets = [
       secondaryResourse: 'Laterite',
       gases: ['Hydrogen'],
       difficulty: 'Средняя',
+      scale: 'Большой',
+      dayLength: '12 мин',
       sun: 'Отличное',
       wind: 'Плохое',
       powerRequired: '6U/s',
@@ -142,6 +150,8 @@ List<Planet> planets = [
       secondaryResourse: 'Laterite',
       gases: ['Hydrogen'],
       difficulty: 'Средняя',
+      scale: 'Большой',
+      dayLength: '12 мин',
       sun: 'Отличное',
       wind: 'Плохое',
       powerRequired: '6U/s',
@@ -157,6 +167,8 @@ List<Planet> planets = [
       secondaryResourse: 'Laterite',
       gases: ['Hydrogen'],
       difficulty: 'Средняя',
+      scale: 'Большой',
+      dayLength: '12 мин',
       sun: 'Отличное',
       wind: 'Плохое',
       powerRequired: '6U/s',
@@ -172,6 +184,8 @@ List<Planet> planets = [
       secondaryResourse: 'Laterite',
       gases: ['Hydrogen'],
       difficulty: 'Средняя',
+      scale: 'Большой',
+      dayLength: '12 мин',
       sun: 'Отличное',
       wind: 'Плохое',
       powerRequired: '6U/s',
@@ -187,6 +201,8 @@ List<Planet> planets = [
       secondaryResourse: 'Laterite',
       gases: ['Hydrogen'],
       difficulty: 'Средняя',
+      scale: 'Большой',
+      dayLength: '12 мин',
       sun: 'Отличное',
       wind: 'Плохое',
       powerRequired: '6U/s',
@@ -202,6 +218,8 @@ List<Planet> planets = [
       secondaryResourse: 'Laterite',
       gases: ['Hydrogen'],
       difficulty: 'Средняя',
+      scale: 'Большой',
+      dayLength: '12 мин',
       sun: 'Отличное',
       wind: 'Плохое',
       powerRequired: '6U/s',
@@ -217,6 +235,8 @@ List<Planet> planets = [
       secondaryResourse: 'Laterite',
       gases: ['Hydrogen'],
       difficulty: 'Средняя',
+      scale: 'Большой',
+      dayLength: '12 мин',
       sun: 'Отличное',
       wind: 'Плохое',
       powerRequired: '6U/s',
@@ -226,62 +246,52 @@ List<Planet> planets = [
   ];
 
 
-class RequirementTab extends StatelessWidget {
-  /// Заголовок вкладки, например, "ТРЕБУЕТСЯ"
-  final String title;
+class SpecialLocation {
+  final String name;                    // Название: "Неопознанный спутник"
+  final String image;                   // Путь к изображению
+  final String description;            // Описание/назначение
+  final String howToFind;              // Как найти (например: "над ядром", "в орбите")
+  final String function;               // Назначение: например, телепорт, финал игры и т.д.
+  final List<String> requirements;     // Что нужно для активации (если применимо)
+  final String relatedPlanet;          // Планета, если привязано (например: "Sylva" или "вне планет")
+  final String? loreNote;              // Лор/факт (по желанию)
 
-  /// Основное содержимое: список виджетов (текст, изображения и т.п.)
-  final List<Widget> children;
-
-  const RequirementTab({
-    Key? key,
-    this.title = 'ТРЕБУЕТСЯ',
-    required this.children,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color(0xFF0033A0), // темно-синий фон
-        border: Border.all(
-          color: Colors.lightBlueAccent, // яркая рамка
-          width: 2,
-        ),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Заголовок вкладки
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-            decoration: BoxDecoration(
-              color: Color(0xFF004CFF), // синий фон заголовка
-              borderRadius: BorderRadius.vertical(top: Radius.circular(6)),
-            ),
-            child: Text(
-              title.toUpperCase(),
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-                letterSpacing: 1.2,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-
-          // Содержимое вкладки
-          Padding(
-            padding: EdgeInsets.all(8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: children,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  SpecialLocation({
+    required this.name,
+    required this.image,
+    required this.description,
+    required this.howToFind,
+    required this.function,
+    required this.requirements,
+    required this.relatedPlanet,
+    this.loreNote,
+  });
 }
+
+final List<SpecialLocation> specialLocations = [
+  SpecialLocation(
+    name: 'Неопознанный спутник',
+    image: 'assets/images/unknown_sputnik.png',
+    description: 'Древняя структура, расположенная в орбите. Используется для завершения игры.',
+    howToFind: 'Находится в космосе. Попасть можно через ядро любой активированной планеты.',
+    function: 'Финальная активация. Завершает сюжет.',
+    requirements: [
+      'Активировать ядра всех планет',
+      'Вставить 3 геометрических трекера',
+    ],
+    relatedPlanet: 'Вне планет',
+    loreNote: 'Предположительно, часть древней транспортной системы.',
+  ),
+  SpecialLocation(
+    name: 'Солнечная комната',
+    image: 'assets/images/sun_room.png',
+    description: 'Загадочная структура с мощным светом. Часто упоминается в лоре.',
+    howToFind: 'Может быть обнаружена через телепорты ядра. Доступна после активации всех планет.',
+    function: 'Открывает финальные элементы сюжета. Возможно, арена или храм.',
+    requirements: [
+      'Завершить активацию всех платформ планет',
+    ],
+    relatedPlanet: 'Неизвестно / вне карт',
+    loreNote: 'Некоторые теории связывают её с исчезновением древней цивилизации.',
+  ),
+];

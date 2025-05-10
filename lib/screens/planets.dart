@@ -1,148 +1,190 @@
 import 'package:flutter/material.dart';
-import '../widgets/planet_page.dart';
-import '../models.dart';
+import 'package:project/widgets/models.dart';
+import 'package:project/widgets/planet_page.dart';
+import 'package:project/widgets/special_location.dart';
 
-class HomePage extends StatelessWidget {
+class LocationsScreen extends StatelessWidget {
+  final List<Planet> planets;
+  final List<SpecialLocation> specialLocations;
+
+  const LocationsScreen({
+    required this.planets,
+    required this.specialLocations,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Планеты Astroneer', style: TextStyle(color: Colors.white)),
+        title: Text('Космические объекты', style: TextStyle(color: Colors.white)),
         centerTitle: true,
         backgroundColor: Color(0xffd703cf),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
-          childAspectRatio: 1, // квадратные карточки
-          children: planets.map((planet) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PlanetDetailPage(planet: planet),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Text(
+                'ПЛАНЕТЫ',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: planets.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: 1,
+              ),
+              itemBuilder: (context, index) {
+                final planet = planets[index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => PlanetDetailPage(planet: planet),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Colors.lightBlueAccent,
+                        width: 2,
+                      ),
+                      color: Color(0xff0050e7),
+                    ),
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: SizedBox(
+                              height: 150,
+                              width: 150,
+                              child: Image.asset(
+                                planet.image,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 6),
+                            child: Text(
+                              planet.name,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
-              child: Stack(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xFF0050e7),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Color(0xff01d1db), width: 5),
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        planet.image,
-                        width: 150,
-                        height: 150,
-                        fit: BoxFit.contain,
+            ),
+            const SizedBox(height: 24),
+            Center(
+              child: Text(
+                'ОСОБЫЕ ЛОКАЦИИ',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: specialLocations.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: 1,
+              ),
+              itemBuilder: (context, index) {
+                final location = specialLocations[index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => SpecialLocationPage(location: location),
                       ),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Colors.lightBlueAccent,
+                        width: 2,
+                      ),
+                      color: Color(0xff0050e7),
                     ),
-                  ),
-                  Positioned.fill(
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 6),
-                        child: Text(
-                          planet.name,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            shadows: [
-                              Shadow(
-                                color: Colors.black,
-                                offset: Offset(1, 1),
-                                blurRadius: 4,
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: SizedBox(
+                              height: 150,
+                              width: 150,
+                              child: Image.asset(
+                                location.image,
+                                fit: BoxFit.cover,
                               ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 6),
+                            child: Text(
+                              location.name,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            );
-          }).toList(),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
   }
-}
-
-class ResourceBlock extends StatelessWidget {
-  final String title;
-  final List<ResourceItem> items;
-
-  const ResourceBlock({
-    super.key,
-    required this.title,
-    required this.items,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.cyanAccent, width: 1.5),
-        borderRadius: BorderRadius.circular(6),
-        color: Color(0xFF003366), // синий фон
-      ),
-      padding: EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Заголовок блока
-          Text(
-            title,
-            style: TextStyle(
-              color: Colors.cyanAccent,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-              letterSpacing: 1,
-            ),
-          ),
-          SizedBox(height: 8),
-
-          // Контент
-          ...items.map((item) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Row(
-                  children: [
-                    if (item.imagePath != null)
-                      Image.asset(
-                        item.imagePath!,
-                        width: 24,
-                        height: 24,
-                      ),
-                    if (item.imagePath != null) SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        item.text,
-                        style: TextStyle(color: Colors.white, fontSize: 13),
-                      ),
-                    ),
-                  ],
-                ),
-              )),
-        ],
-      ),
-    );
-  }
-}
-
-class ResourceItem {
-  final String text;
-  final String? imagePath;
-
-  ResourceItem({required this.text, this.imagePath});
 }

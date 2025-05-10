@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models.dart';
-
+import 'models.dart';
+import 'requirement_tab.dart';
 class PlanetDetailPage extends StatelessWidget {
   final Planet planet;
 
@@ -55,6 +55,14 @@ class PlanetDetailPage extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                       Text(
+                        "Размер: ${planet.scale}",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Text(
+                        'Длина дня: ${planet.dayLength}',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Text(
                         'Солнце: ${planet.sun}',
                         style: TextStyle(color: Colors.white),
                       ),
@@ -101,13 +109,13 @@ class PlanetDetailPage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             RequirementTab(
-              title: 'Основная информация',
+              title: 'Врата и ядро',
               children: [
                 Center(
                   child: Column(
                     children: [
                       Text(
-                        "Ресурс портала: ${planet.gatewayResouce}",
+                        "Ресурс ядра: ${planet.gatewayResouce}",
                         style: TextStyle(color: Colors.white),
                       ),
                       SizedBox(height: 16),
@@ -117,6 +125,7 @@ class PlanetDetailPage extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: 16),
           ],
         ),
       ),
