@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'models.dart';
-import 'requirement_tab.dart';
+import '../widgets/models.dart';
+import '../widgets/requirement_tab.dart';
 class PlanetDetailPage extends StatelessWidget {
   final Planet planet;
 

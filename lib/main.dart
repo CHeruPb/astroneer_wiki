@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/screens/planets.dart';
+import 'package:project/screens/resources.dart';
 import 'package:project/widgets/models.dart';
 
 void main() {
@@ -12,9 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LocationsScreen(
-        planets: planets,
-        specialLocations: specialLocations,
+      home: ResourcesScreen(
+        resources: exampleResources,
       ),
       theme: ThemeData(
         fontFamily: 'NDastroneer',

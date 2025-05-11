@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/widgets/models.dart';
-import 'package:project/widgets/planet_page.dart';
-import 'package:project/widgets/special_location.dart';
+import 'package:project/screens/planet_page.dart';
+import 'package:project/screens/special_location.dart';
 
 class LocationsScreen extends StatelessWidget {
   final List<Planet> planets;

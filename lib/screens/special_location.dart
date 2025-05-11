@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/widgets/models.dart';
-import 'special_location.dart';
-import 'requirement_tab.dart';
+import '../widgets/requirement_tab.dart';
 
 class SpecialLocationPage extends StatelessWidget {
   final SpecialLocation location;
@@ -23,7 +22,7 @@ class SpecialLocationPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             RequirementTab(
-              title: 'ОПИСАНИЕ',
+              title: location.name,
               children: [
                 ClipRRect(
               borderRadius: BorderRadius.circular(12),

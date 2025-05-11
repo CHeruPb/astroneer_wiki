@@ -295,3 +295,40 @@ final List<SpecialLocation> specialLocations = [
     loreNote: 'Некоторые теории связывают её с исчезновением древней цивилизации.',
   ),
 ];
+
+class Resource {
+  final String name;
+  final String image;
+  final String description;
+  final String obtainedFrom; // Где или как получить
+  final List<String> usedIn; // Названия объектов, где используется
+  final String category; // Природный / Переплавленный / Сложный / Газ и т.д.
+
+  Resource({
+    required this.name,
+    required this.image,
+    required this.description,
+    required this.obtainedFrom,
+    required this.usedIn,
+    required this.category,
+  });
+}
+
+final List<Resource> exampleResources = [
+  Resource(
+    name: 'Малахит',
+    image: 'assets/images/malachite.png',
+    description: 'Малахит — природный ресурс, используется для получения меди.',
+    obtainedFrom: 'Планеты: Сильва, Калидор',
+    usedIn: ['Плавильная печь', 'Средний генератор'],
+    category: 'Природный',
+  ),
+  Resource(
+    name: 'Медь',
+    image: 'assets/images/copper.png',
+    description: 'Переплавленный ресурс, получаемый из малахита.',
+    obtainedFrom: 'Плавильная печь',
+    usedIn: ['Платформы', 'Электронные устройства'],
+    category: 'Переплавленный',
+  ),
+];
