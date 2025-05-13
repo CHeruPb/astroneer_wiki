@@ -1,75 +1,5 @@
 import 'package:flutter/material.dart';
 
-class ResourceFromOne {
-  final String name;
-  final String description;
-  final String image;
-  final String resourceOne;
-
-  ResourceFromOne({
-    required this.name,
-    required this.description,
-    required this.image,
-    required this.resourceOne,
-  });
-}
-
-class ResourceFromTwo {
-  final String name;
-  final String description;
-  final String image;
-  final String resourceOne;
-  final String resourceTwo;
-
-  ResourceFromTwo({
-    required this.name,
-    required this.description,
-    required this.image,
-    required this.resourceOne,
-    required this.resourceTwo,
-  });
-}
-
-class ResourceFromThree {
-  final String name;
-  final String description;
-  final String image;
-  final String resourceOne;
-
-  final String resourceTwo;
-
-  final String resourceThree;
-
-  ResourceFromThree({
-    required this.name,
-    required this.description,
-    required this.image,
-    required this.resourceOne,
-    required this.resourceTwo,
-    required this.resourceThree,
-  });
-}
-
-class ResourceFromFour {
-  final String name;
-  final String description;
-  final String image;
-  final String resourceOne;
-  final String resourceTwo;
-  final String resourceThree;
-  final String resourceFour;
-
-  ResourceFromFour({
-    required this.name,
-    required this.description,
-    required this.image,
-    required this.resourceOne,
-    required this.resourceTwo,
-    required this.resourceThree,
-    required this.resourceFour,
-  });
-}
-
 class Planet {
   final String name;
   final String type;
@@ -330,5 +260,47 @@ final List<Resource> exampleResources = [
     obtainedFrom: 'Плавильная печь',
     usedIn: ['Платформы', 'Электронные устройства'],
     category: 'Переплавленный',
+  ),
+];
+
+class Ingredient {
+  final String iconPath;
+  final String name;
+
+  Ingredient({required this.iconPath, required this.name});
+}
+
+class CraftableModule {
+  final String name;
+  final String description;
+  final String image;
+  final String icon;
+  final List<Ingredient> ingredients;
+  final String sortByPrinter;
+  final String sortByCategory;
+
+  CraftableModule({
+    required this.name,
+    required this.description,
+    required this.image,
+    required this.icon,
+    required this.ingredients,
+    required this.sortByPrinter,
+    required this.sortByCategory,
+  });
+}
+
+final List<CraftableModule> modules = [
+  CraftableModule(
+  name: "Штука",
+  description: "Чета делает",
+  image: "assets/images/vesania.png",
+  icon: "assets/images/vesania.png",
+  ingredients: [
+    Ingredient(iconPath: "assets/images/malachite.png", name: "Малахит"),
+    Ingredient(iconPath: "assets/images/copper.png", name: "Медь"),
+  ],
+  sortByPrinter: "Большой",
+  sortByCategory: "Хз",
   ),
 ];
