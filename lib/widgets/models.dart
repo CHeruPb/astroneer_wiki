@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Planet {
   final String name;
   final String type;
@@ -276,8 +274,8 @@ class CraftableModule {
   final String image;
   final String icon;
   final List<Ingredient> ingredients;
-  final String sortByPrinter;
-  final String sortByCategory;
+  final String printerLevel;
+  final String category;
 
   CraftableModule({
     required this.name,
@@ -285,8 +283,8 @@ class CraftableModule {
     required this.image,
     required this.icon,
     required this.ingredients,
-    required this.sortByPrinter,
-    required this.sortByCategory,
+    required this.printerLevel,
+    required this.category,
   });
 }
 
@@ -300,7 +298,7 @@ final List<CraftableModule> modules = [
     Ingredient(iconPath: "assets/images/malachite.png", name: "Малахит"),
     Ingredient(iconPath: "assets/images/copper.png", name: "Медь"),
   ],
-  sortByPrinter: "Большой",
-  sortByCategory: "Хз",
+  printerLevel: "Большой",
+  category: "Хз",
   ),
 ];

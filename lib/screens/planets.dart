@@ -17,7 +17,10 @@ class LocationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Космические объекты', style: TextStyle(color: Colors.white)),
+        title: Text(
+          'Космические объекты',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         backgroundColor: Color(0xffd703cf),
         iconTheme: IconThemeData(color: Colors.white),

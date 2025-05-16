@@ -31,9 +31,21 @@ class ModulePage extends StatelessWidget {
                     child: Column(
                       children: [
                         Image.asset(module.image),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              RequirementTab(
+                title: 'Основная информация',
+                children: [
+                  Center(
+                    child: Column(
+                      children: [
                         Text('${module.description}'),
-                        Text('Требуемый принтер: ${module.sortByPrinter}'),
-                        Text('Категория: ${module.sortByCategory}'),
+                        Text('Требуемый принтер: ${module.printerLevel}'),
+                        Text('Категория: ${module.category}'),
                       ],
                     ),
                   ),
