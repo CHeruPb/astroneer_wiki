@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       ),
       _MenuItem(
         title: 'Ресурсы',
-        imagePath: 'assets/images/malachite.png',
+        imagePath: 'assets/images/copper.png',
         onTap: () => Navigator.pushNamed(context, '/resources'),
       ),
       _MenuItem(

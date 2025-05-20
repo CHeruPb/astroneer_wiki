@@ -3,9 +3,9 @@ class Planet {
   final String type;
   final String image;
   final String description;
-  final String mainResourse;
-  final String secondaryResourse;
-  final List<String> gases;
+  final List<Ingredient> mainResourse;
+  final List<Ingredient> secondaryResourse;
+  final List<Ingredient> gases;
   final String difficulty;
   final String scale;
   final String dayLength;
@@ -13,7 +13,7 @@ class Planet {
   final String wind;
   final String powerRequired;
   final String gatewayImage;
-  final String gatewayResouce;
+  final Ingredient gatewayResouce;
 
   Planet({
     required this.name,
@@ -37,139 +37,139 @@ class Planet {
 List<Planet> planets = [
     Planet(
       name: 'Сильва',
-      type: 'Terran',
+      type: 'Земная',
       image: 'assets/images/sylva.png',
       description: 'Начальная планета с умеренным климатом.',
-      mainResourse: 'Compound',
-      secondaryResourse: 'Resin',
-      gases: ['Oxygen'],
+      mainResourse: [sphalerite, malachite],
+      secondaryResourse: [graphite, quartz, laterite, ammonium, compound, resin, astronium],
+      gases: [hydrogen, nitrogen],
       difficulty: 'Легкая',
-      scale: 'Большой',
+      scale: 'Большая',
       dayLength: '12 мин',
-      sun: 'Хорошее',
-      wind: 'Среднее',
+      sun: 'Хорошо',
+      wind: 'Средне',
       powerRequired: '5U/s',
       gatewayImage: 'assets/images/gateway_sylva.png',
-      gatewayResouce: 'Quartz',
+      gatewayResouce: quartz,
     ),
     Planet(
       name: 'Дезоло',
-      type: 'Arid',
+      type: 'Земной спутник',
       image: 'assets/images/desolo.png',
-      description: 'Пустынная планета с большим количеством солнечной энергии.',
-      mainResourse: 'Malachite',
-      secondaryResourse: 'Laterite',
-      gases: ['Hydrogen'],
-      difficulty: 'Средняя',
-      scale: 'Большой',
-      dayLength: '12 мин',
-      sun: 'Отличное',
-      wind: 'Плохое',
-      powerRequired: '6U/s',
-      gatewayImage: 'assets/images/gateway_calidor.png',
-      gatewayResouce: 'Explosive Powder',
+      description: 'Бесплодная, безатмосферная планета, спутник планеты Сильва.',
+      mainResourse: [wolframite, sphalerite],
+      secondaryResourse:[quartz, clay, ammonium, laterite, graphite, compound, resin, astronium],
+      gases: [],
+      difficulty: 'Легкая',
+      scale: 'Малая',
+      dayLength: '1 мин 55 сек',
+      sun: 'Отлично',
+      wind: 'Плохо',
+      powerRequired: '8U/s',
+      gatewayImage: 'assets/image/gateway_desolo.png',
+      gatewayResouce: clay,
     ),
     Planet(
       name: 'Калидор',
-      type: 'Arid',
+      type: 'Засушливый',
       image: 'assets/images/cal.png',
       description: 'Пустынная планета с большим количеством солнечной энергии.',
-      mainResourse: 'Malachite',
-      secondaryResourse: 'Laterite',
-      gases: ['Hydrogen'],
+      mainResourse: [wolframite, malachite],
+      secondaryResourse: [laterite, ammonium, compound, graphite, resin, quartz, clay, astronium],
+      gases: [hydrogen, sulfur],
       difficulty: 'Средняя',
-      scale: 'Большой',
-      dayLength: '12 мин',
-      sun: 'Отличное',
-      wind: 'Плохое',
-      powerRequired: '6U/s',
+      scale: 'Средний',
+      dayLength: '8 мин',
+      sun: 'Отлично',
+      wind: 'Плохо',
+      powerRequired: '12U/s',
       gatewayImage: 'assets/images/gateway_calidor.png',
-      gatewayResouce: 'Explosive Powder',
+      gatewayResouce: clay,
     ),
     Planet(
       name: 'Везания',
-      type: 'Arid',
+      type: 'Экзотическая',
       image: 'assets/images/vesania.png',
-      description: 'Пустынная планета с большим количеством солнечной энергии.',
-      mainResourse: 'Malachite',
-      secondaryResourse: 'Laterite',
-      gases: ['Hydrogen'],
+      description: 'Одна из самых ярких планет, густая и пышная атмосфера, разнообразная и необычная местность.',
+      mainResourse: [lithium, titanite],
+      secondaryResourse: [graphite, laterite, clay, quartz, compound, resin, astronium],
+      gases: [hydrogen, argone, nitrogen],
       difficulty: 'Средняя',
-      scale: 'Большой',
-      dayLength: '12 мин',
-      sun: 'Отличное',
-      wind: 'Плохое',
-      powerRequired: '6U/s',
-      gatewayImage: 'assets/images/gateway_calidor.png',
-      gatewayResouce: 'Explosive Powder',
+      scale: 'Средняя',
+      dayLength: '13 мин 30 сек',
+      sun: 'Плохо',
+      wind: 'Отлично',
+      powerRequired: '16U/s',
+      gatewayImage: 'assets/images/gateway_vesania.png',
+      gatewayResouce: clay,
     ),
     Planet(
       name: 'Новус',
-      type: 'Arid',
+      type: 'Экзотический спутник',
       image: 'assets/images/novus.png',
-      description: 'Пустынная планета с большим количеством солнечной энергии.',
-      mainResourse: 'Malachite',
-      secondaryResourse: 'Laterite',
-      gases: ['Hydrogen'],
+      description: 'Также одна из самых ярких планет в Astroneer, с её тонкой туманной атмосферой и пурпурной, покрытой лесами и кратерами местностью.',
+      mainResourse: [lithium, hematite, laterite],
+      secondaryResourse: [compound, quartz, resin, graphite, ammonium, clay, astronium],
+      gases: [metane, hydrogen],
       difficulty: 'Средняя',
-      scale: 'Большой',
-      dayLength: '12 мин',
-      sun: 'Отличное',
-      wind: 'Плохое',
-      powerRequired: '6U/s',
-      gatewayImage: 'assets/images/gateway_calidor.png',
-      gatewayResouce: 'Explosive Powder',
+      scale: 'Маленький',
+      dayLength: '3 мин 30 сек',
+      sun: 'Крайне отлично',
+      wind: 'Хорошо',
+      powerRequired: '22U/s',
+      gatewayImage: 'assets/images/gateway_novus.png',
+      gatewayResouce: clay,
     ),
     Planet(
       name: 'Гласио',
-      type: 'Arid',
-      image: 'assets/images/glasio.png',
-      description: 'Пустынная планета с большим количеством солнечной энергии.',
-      mainResourse: 'Malachite',
-      secondaryResourse: 'Laterite',
-      gases: ['Hydrogen'],
-      difficulty: 'Средняя',
-      scale: 'Большой',
-      dayLength: '12 мин',
-      sun: 'Отличное',
-      wind: 'Плохое',
-      powerRequired: '6U/s',
-      gatewayImage: 'assets/images/gateway_calidor.png',
-      gatewayResouce: 'Explosive Powder',
+      type: 'Тундровая',
+      image: 'assets/images/glacio.png',
+      description: 'Планета с тонкой атмосферой, сильными ветрами и ледяныим горами',
+      mainResourse: [titanite, hematite],
+      secondaryResourse: [laterite, graphite, quartz, ammonium, compound, resin, astronium],
+      gases: [argone],
+      difficulty: 'Высокая',
+      scale: 'Средняя',
+      dayLength: '20 мин',
+      sun: 'Плохо',
+      wind: 'Отлично',
+      powerRequired: '26U/s',
+      gatewayImage: 'assets/images/gateway_glasio.png',
+      gatewayResouce: clay,
     ),
     Planet(
       name: 'Атрокс',
-      type: 'Arid',
+      type: 'Радиоактивная',
       image: 'assets/images/atrox.png',
-      description: 'Пустынная планета с большим количеством солнечной энергии.',
-      mainResourse: 'Malachite',
-      secondaryResourse: 'Laterite',
-      gases: ['Hydrogen'],
-      difficulty: 'Средняя',
-      scale: 'Большой',
-      dayLength: '12 мин',
-      sun: 'Отличное',
-      wind: 'Плохое',
-      powerRequired: '6U/s',
+      description: 'Планета с ядовитой атмосферой, а за коварными кратерами скрывается очень агрессивная флора.',
+      mainResourse: [],
+      secondaryResourse: [graphite, laterite, quartz, compound, resin, ammonium, clay, astronium],
+      gases: [metane, nitrogen, sulfur, helium],
+      difficulty: 'Крайне высокая',
+      scale: 'Средний',
+      dayLength: '20 мин',
+      sun: 'Плохо',
+      wind: 'Очень плохо',
+      powerRequired: '30U/s',
       gatewayImage: 'assets/images/gateway_calidor.png',
-      gatewayResouce: 'Explosive Powder',
+      gatewayResouce: clay,
     ),
     Planet(
       name: 'Эолуз',
-      type: 'Arid',
+      type: 'Глючная',
       image: 'assets/images/aeoluz.png',
-      description: 'Пустынная планета с большим количеством солнечной энергии.',
-      mainResourse: 'Malachite',
-      secondaryResourse: 'Laterite',
-      gases: ['Hydrogen'],
+      description: 'Смесь оригинальных планет, но со Штормами, новыми типами пещер, подземными регионами и новым ядром',
+      mainResourse: [ammonium, clay, compound, graphite, hematite, laterite, lithium, malachite, organic, quartz, resin, sphalerite, titanite, wolframite, astronium],
+      secondaryResourse: [],
+      gases: [argone, helium, hydrogen, metane, nitrogen, sulfur],
       difficulty: 'Средняя',
-      scale: 'Большой',
-      dayLength: '12 мин',
-      sun: 'Отличное',
-      wind: 'Плохое',
-      powerRequired: '6U/s',
-      gatewayImage: 'assets/images/gateway_calidor.png',
-      gatewayResouce: 'Explosive Powder',
+      scale: 'Очень большая',
+      dayLength: '9 мин',
+      sun: 'Ниже среднего',
+      wind: 'Средне',
+      powerRequired: 'Не имеет привычного ядра, и соответственно, врат',
+      gatewayImage: '',
+      gatewayResouce: clay
     ),
   ];
 
@@ -268,6 +268,54 @@ class Ingredient {
   Ingredient({required this.iconPath, required this.name});
 }
 
+final List<Ingredient> allIngredients = [
+  Ingredient(iconPath: 'assets/images/resources/compound.png', name: 'Соединение'),
+  Ingredient(iconPath: 'assets/images/resources/resin.png', name: 'Смола'),
+  Ingredient(iconPath: 'assets/images/resources/clay.png', name: 'Глина'),
+  Ingredient(iconPath: 'assets/images/resources/graphite.png', name: 'Графит'),
+  Ingredient(iconPath: 'assets/images/resources/hematite.png', name: 'Гематит'),
+  Ingredient(iconPath: 'assets/images/resources/laterite.png', name: 'Латерит'),
+  Ingredient(iconPath: 'assets/images/resources/lithium.png', name: 'Литий'),
+  Ingredient(iconPath: 'assets/images/resources/organic.png', name: 'Органика'),
+  Ingredient(iconPath: 'assets/images/resources/quartz.png', name: 'Кварц'),
+  Ingredient(iconPath: 'assets/images/resources/sphalerite.png', name: 'Сфалерит'),
+  Ingredient(iconPath: 'assets/images/resources/titanite.png', name: 'Титанит'),
+  Ingredient(iconPath: 'assets/images/resources/wolfranite.png', name: 'Вольфрамит'),
+  Ingredient(iconPath: 'assets/images/resources/ammonium.png', name: 'Аммоний'),
+  Ingredient(iconPath: 'assets/images/resources/astronium.png', name: 'Астрониум'),
+  Ingredient(iconPath: 'assets/images/resources/malachite.png', name: 'Малахит'),
+
+  Ingredient(iconPath: 'assets/images/resources/argone.png', name: 'Аргон'),
+  Ingredient(iconPath: 'assets/images/resources/metane.png', name: 'Метан'),
+  Ingredient(iconPath: 'assets/images/resources/hydrogen.png', name: 'Водород'),
+  Ingredient(iconPath: 'assets/images/resources/nitrogen.png', name: 'Азот'),
+  Ingredient(iconPath: 'assets/images/resources/helium.png', name: 'Гелий'),
+  Ingredient(iconPath: 'assets/images/resources/sulfur.png', name: 'Сера'),
+];
+
+final Ingredient compound = allIngredients[0];
+final Ingredient resin = allIngredients[1];
+final Ingredient clay = allIngredients[2];
+final Ingredient graphite = allIngredients[3];
+final Ingredient hematite = allIngredients[4];
+final Ingredient laterite = allIngredients[5];
+final Ingredient lithium = allIngredients[6];
+final Ingredient organic = allIngredients[7];
+final Ingredient quartz = allIngredients[8];
+final Ingredient sphalerite = allIngredients[9];
+final Ingredient titanite = allIngredients[10];
+final Ingredient wolframite = allIngredients[11];
+final Ingredient ammonium = allIngredients[12];
+final Ingredient astronium = allIngredients[13];
+final Ingredient malachite = allIngredients[14];
+
+final Ingredient argone = allIngredients[15];
+final Ingredient metane = allIngredients[16];
+final Ingredient hydrogen = allIngredients[17];
+final Ingredient nitrogen = allIngredients[18];
+final Ingredient helium = allIngredients[19];
+final Ingredient sulfur = allIngredients[20];
+
 class CraftableModule {
   final String name;
   final String description;
@@ -295,8 +343,8 @@ final List<CraftableModule> modules = [
   image: "assets/images/vesania.png",
   icon: "assets/images/vesania.png",
   ingredients: [
-    Ingredient(iconPath: "assets/images/malachite.png", name: "Малахит"),
-    Ingredient(iconPath: "assets/images/copper.png", name: "Медь"),
+    malachite,
+    astronium,
   ],
   printerLevel: "Большой",
   category: "Хз",

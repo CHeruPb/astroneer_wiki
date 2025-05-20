@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project/widgets/ingridients_list.dart';
 import '../widgets/models.dart';
 import '../widgets/requirement_tab.dart';
+
 class PlanetDetailPage extends StatelessWidget {
   final Planet planet;
 
@@ -89,19 +91,34 @@ class PlanetDetailPage extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        "Основной ресурс: ${planet.mainResourse}",
-                        style: TextStyle(color: Colors.white),
+                        "Основные ресурсы:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
+                      
+                      IngredientsList(ingredients: planet.mainResourse),
+
+                      SizedBox(height: 16),
+                      
                       Text(
-                        "Вторичный ресурс: ${planet.secondaryResourse}",
-                        style: TextStyle(color: Colors.white),
+                        "Вторичные ресурсы:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
+                      IngredientsList(ingredients: planet.secondaryResourse),
                       SizedBox(height: 16),
                       Text(
                         "Газы:",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                      ...planet.gases.map((gas) => Text("- $gas")),
+                      IngredientsList(ingredients: planet.gases),
                     ],
                   ),
                 ),
@@ -114,9 +131,28 @@ class PlanetDetailPage extends StatelessWidget {
                 Center(
                   child: Column(
                     children: [
-                      Text(
-                        "Ресурс ядра: ${planet.gatewayResouce}",
-                        style: TextStyle(color: Colors.white),
+                      Center(
+                        child: Row(
+                          children: [
+                            Text(
+                              "Ресурс ядра:",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  planet.gatewayResouce.iconPath,
+                                  width: 24,
+                                  height: 24,
+                                  errorBuilder:
+                                      (_, __, ___) => Icon(Icons.error, size: 24),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(planet.gatewayResouce.name),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(height: 16),
                       Image.asset(planet.gatewayImage, width: 250, height: 250),
